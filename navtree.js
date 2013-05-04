@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "SDLogger", "index.html", [
-    [ "SDLogger.h", "md__r_e_a_d_m_e.html", null ],
+    [ "SDLogger", "md__r_e_a_d_m_e.html", null ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
