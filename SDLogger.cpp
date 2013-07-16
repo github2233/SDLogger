@@ -95,6 +95,19 @@ void SDLogger::SDLogger::logString(String &s){
 /** Logs a commented line int log file, every line will begin with # symbol*/
 void SDLogger::logComment(String s){logString("#" + s);	}
 
+void SDLogger::logSensorStamp(String id,float value){
+	openLogFile();
+	file.writeCSVString(id);
+	file.print(timeStampString());file.sc();
+	file.print(value);
+	endLog();
+}
+void SDLogger::logSensor(String id,float value){
+	openLogFile();
+	file.writeCSVString(id);
+	file.print(value);
+	endLog();
+}
 
 
 // FILE METHODS

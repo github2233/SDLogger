@@ -1,5 +1,6 @@
 #include "TimeStrings.h"
 
+
 String dateString(){
 //	String s;
 //	appendLong(s,day(),2);
@@ -35,6 +36,46 @@ String hourString(){
 }
 
 String dateHourString(){return dateString() + " " + hourString();}
+
+String timeStampString( ){
+
+	XString s;
+	s.formatLong(year(),4);
+	s+= '-';
+	s.formatLong(month(),2);
+	s+= '-';
+	s.formatLong(day(),2);
+	s+= 'T';
+	s+=hourString();
+	s+= "+0200";
+
+	return s;
+}
+
+String timeStampString(int utcMinutesDifference){
+
+	XString s;
+	s.formatLong(year(),4);
+	s+= '-';
+	s.formatLong(month(),2);
+	s+= '-';
+	s.formatLong(day(),2);
+	s+= 'T';
+	s+=hourString();
+
+	if(utcMinutesDifference<0) {
+		s += '-';
+		utcMinutesDifference += -1;
+	}else{
+		s+= '+';
+	}
+	s.formatLong(utcMinutesDifference/60,2);
+	s.formatLong(utcMinutesDifference%60,2);
+//	s+= "+0200";
+
+
+	return s;
+}
 
 
 

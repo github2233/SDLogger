@@ -12,7 +12,7 @@ bool XFile::jumpln(){
 /** jumps CSV */
 bool XFile::jumpCSV(){
 	int c = 0;
-	while((c != -1) && (c!= ';')) {c = read();}
+	while((c != -1) && (c!= ';') &&  (c!= ',')) {c = read();}
 	return (c != -1 );
 }
 
@@ -67,7 +67,7 @@ void XFile::print2Stream(Stream *stream){
 // WRITTING METHODS
 
 // Help methods
-void XFile::sc(){print(';');}
+void XFile::sc(){print(',');}
 
 /** Writes float value to file */
 void XFile::writeLong(long &number, uint8_t size){printFormattedLong(this,number,size);}
@@ -106,7 +106,7 @@ void XFile::writeCSVFloat(float* values,uint8_t columns,uint8_t intSize,uint8_t 
 
 
 /** Writes String and ";" */
-void XFile::writeCSVString(String &s){print(s);sc();}
+void XFile::writeCSVString(String s){print(s);sc();}
 /** Writes value and ";" */
 void XFile::writeCSVEFloat(float &value){
 //		printFormattedEFloat(this,value);sc();
@@ -138,7 +138,7 @@ XString XFile::readNextCSVString(){
 
 	int c = read();
 	XString s;
-	while((c != -1) && (c!=';')){
+	while((c != -1) && (c!=';') && (c!=',')){
 		if((!isSpace(c) || (c ==' '))) s += (char)c;
 		c = read();
 	}
@@ -159,11 +159,13 @@ String XFile::getCSVColumnInString(String s, unsigned int &column){
 
 	while(c<column && s.length()>0){
 		n = s.indexOf(';');
+		if(n<0) n = s.indexOf(',');
 		if(n>=0){s = s.substring(n+1);}
 		c++;
 	}
 
 	n = s.indexOf(';');
+	if(n<0) n = s.indexOf(',');
 	if(n > 0) s = s.substring(0,n);
 	return s;
 

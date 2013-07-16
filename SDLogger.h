@@ -100,7 +100,8 @@ public :
 	/** Logs a commented line int log file, every line will begin with # symbol*/
 	void logComment(String s);
 
-
+	void logSensorStamp(String id,float value);
+	void logSensor(String id,float value);
 	// READING METHODS
 
 	/** Reads line lineNumber in log file */

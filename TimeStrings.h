@@ -11,6 +11,7 @@
 String dateString();
 String hourString();
 String dateHourString();
-
-
+String timeStampString();
+String timeStampString(int );
+//String timeStampZString(int );
 #endif /* TIMESTRINGS_H_ */

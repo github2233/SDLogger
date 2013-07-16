@@ -108,7 +108,7 @@ public :
 
 
 	/** Writes String and ";" */
-	void writeCSVString(String &s);
+	void writeCSVString(String s);
 
 	/** Writes value and ";" */
 	void writeCSVEFloat(float &value);
